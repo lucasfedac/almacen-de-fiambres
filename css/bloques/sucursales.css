@@ -1,0 +1,108 @@
+/* BLOQUE: SUCURSALES */
+
+.bloque--sucursales {
+  background: var(--color-papel);
+}
+
+.sucursales__cabecera {
+  display: grid;
+  gap: var(--e-3);
+  max-width: 40rem;
+}
+
+.sucursales__bajada {
+  color: var(--color-tinta-suave);
+  font-size: var(--t-lg);
+  line-height: 1.5;
+}
+
+.sucursales__rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--e-5);
+  margin-top: var(--e-6);
+}
+
+.sucursal {
+  display: grid;
+  align-content: start;
+  gap: var(--e-3);
+  padding: var(--e-5);
+  border: 1px solid var(--color-linea);
+  border-top: 6px solid var(--color-primario);
+  border-radius: 0 0 var(--radio-medio) var(--radio-medio);
+  background: var(--color-blanco);
+}
+
+.sucursal__nombre {
+  font-size: var(--t-xl);
+}
+
+.sucursal__dato {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.sucursal__dato .icono {
+  margin-top: 0.15rem;
+  color: var(--color-primario);
+}
+
+.sucursal__dato--titulo {
+  font-weight: 700;
+}
+
+.sucursal__ref {
+  display: block;
+  color: var(--color-tinta-suave);
+  font-size: var(--t-sm);
+}
+
+.sucursal__horarios {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.horarios {
+  margin: 0;
+  padding-left: calc(20px + 0.65rem);
+}
+
+.horarios__fila {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e-4);
+  padding-block: 0.3rem;
+  border-bottom: 1px dotted var(--color-linea-fuerte);
+  font-size: var(--t-sm);
+}
+
+.horarios dt {
+  flex: none;
+  font-weight: 600;
+  white-space: nowrap; /* "Lun a Vie" nunca se parte en dos líneas */
+}
+
+.horarios dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* Si abre cortado (mañana y tarde), cada turno va en su propia línea */
+.horarios__tramo {
+  display: block;
+}
+
+.sucursal__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-top: var(--e-3);
+}
+
+.sucursal__acciones .boton {
+  flex: 1 1 auto;
+  min-height: 46px;
+}

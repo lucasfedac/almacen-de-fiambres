@@ -1,0 +1,199 @@
+/* BLOQUE: ENCABEZADO */
+
+.encabezado {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--color-linea);
+  background: rgb(250 248 245 / 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.encabezado__interior {
+  display: flex;
+  align-items: center;
+  gap: var(--e-5);
+  min-height: var(--alto-encabezado);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+  color: var(--color-primario);
+  text-decoration: none;
+}
+
+.logo__texto {
+  font-family: var(--fuente-titulo);
+  font-size: 1.3rem;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.logo__img {
+  width: auto;
+  max-width: 200px;
+}
+
+/* ----- Menú (escritorio) ----- */
+.menu__lista {
+  display: flex;
+  gap: var(--e-5);
+}
+
+.menu__enlace {
+  display: block;
+  padding: 0.5rem 0.15rem;
+  border-bottom: 2px solid transparent;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color var(--transicion), color var(--transicion);
+}
+
+.menu__enlace:hover {
+  color: var(--color-primario);
+}
+
+.menu__enlace[aria-current='true'] {
+  border-bottom-color: var(--color-queso);
+  color: var(--color-primario);
+}
+
+.encabezado__acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+}
+
+/* ----- Botón Mi pedido ----- */
+.boton-pedido {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.4rem 0.95rem;
+  border: 0;
+  border-radius: var(--radio-pildora);
+  background: var(--color-primario);
+  color: var(--color-blanco);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  white-space: nowrap; /* "Mi pedido" no se parte en dos líneas */
+  cursor: pointer;
+  transition: background-color var(--transicion);
+}
+
+.boton-pedido:hover {
+  background: var(--color-primario-oscuro);
+}
+
+.boton-pedido__cuenta {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding-inline: 5px;
+  border-radius: var(--radio-pildora);
+  background: var(--color-queso);
+  color: var(--color-tinta);
+  font-size: var(--t-xs);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.boton-pedido__cuenta--vacia {
+  background: rgb(255 255 255 / 0.22);
+  color: var(--color-blanco);
+}
+
+.boton-pedido__monto {
+  font-variant-numeric: tabular-nums;
+}
+
+.boton-pedido__monto:empty {
+  display: none;
+}
+
+.boton-pedido--salta {
+  animation: boton-pedido-salta 320ms ease-out;
+}
+
+@keyframes boton-pedido-salta {
+  40% {
+    transform: scale(1.07);
+  }
+}
+
+.boton-menu {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-primario);
+  cursor: pointer;
+}
+
+/* ----- Celular y tablet ----- */
+@media (max-width: 899px) {
+  .boton-menu {
+    display: grid;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--e-2) var(--margen-lateral) var(--e-5);
+    border-bottom: 1px solid var(--color-linea);
+    background: var(--color-papel);
+    box-shadow: 0 18px 30px rgb(43 23 27 / 0.12);
+  }
+
+  .encabezado--menu-abierto .menu {
+    display: block;
+  }
+
+  .menu__lista {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .menu__enlace {
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--color-linea);
+    font-size: var(--t-lg);
+  }
+
+  .menu__enlace[aria-current='true'] {
+    border-bottom-color: var(--color-linea);
+    color: var(--color-primario);
+  }
+}
+
+@media (max-width: 519px) {
+  .encabezado__interior {
+    gap: var(--e-3);
+  }
+
+  .encabezado__acciones {
+    flex: none;
+  }
+
+  .boton-pedido__monto {
+    display: none;
+  }
+}
+
+@media (max-width: 379px) {
+  .boton-pedido__texto {
+    display: none;
+  }
+}

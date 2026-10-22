@@ -1,0 +1,69 @@
+/*
+  IDENTIDAD VISUAL
+  Todos los colores, tipografías y medidas del sitio están acá.
+  Para adaptar la web a la marca (por ejemplo, a los colores del logo),
+  alcanza con cambiar estos valores: el resto del CSS no tiene colores sueltos.
+*/
+:root {
+  color-scheme: light;
+
+  /* ----- Colores de marca ----- */
+  --color-primario: #6b1730;          /* bordó: títulos, botones principales, fondo mayorista */
+  --color-primario-oscuro: #4a0f21;   /* hover y fondos profundos */
+  --color-primario-claro: #8a2542;
+  --color-jamon: #f3cbc6;             /* rosa jamón: superficies suaves */
+  --color-jamon-suave: #fbeeec;
+  --color-queso: #edb23b;             /* amarillo provolone: acentos */
+  --color-oliva: #4f5b2e;             /* "abierto ahora" */
+
+  /* ----- Neutros ----- */
+  --color-papel: #faf8f5;             /* fondo general */
+  --color-blanco: #ffffff;
+  --color-tinta: #2b171b;             /* texto */
+  --color-tinta-suave: #6a5559;       /* texto secundario */
+  --color-linea: #e6dcd5;             /* bordes finos */
+  --color-linea-fuerte: #c9b8b0;      /* puntos guía, bordes marcados */
+
+  /* ----- Estados ----- */
+  --color-whatsapp: #0f7b41;
+  --color-whatsapp-oscuro: #0a5f31;
+  --color-error: #a3171f;
+
+  /* ----- Tipografías ----- */
+  --fuente-titulo: 'Young Serif', 'Iowan Old Style', Georgia, serif;
+  --fuente-texto: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fuente-ticket: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+
+  /* ----- Escala de tamaños ----- */
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-base: 1.0625rem;
+  --t-lg: 1.25rem;
+  --t-xl: 1.625rem;
+  --t-2xl: clamp(2rem, 1.5rem + 2vw, 2.875rem);
+  --t-3xl: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+
+  /* ----- Espacios ----- */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+  --e-8: 4.5rem;
+  --espacio-seccion: clamp(3.5rem, 2rem + 6vw, 6.5rem);
+
+  /* ----- Formas ----- */
+  --radio-chico: 6px;
+  --radio-medio: 14px;
+  --radio-pildora: 999px;
+
+  /* ----- Medidas de maquetado ----- */
+  --ancho-contenedor: 1180px;
+  --margen-lateral: clamp(1rem, 4vw, 2.5rem);
+  --alto-encabezado: 64px;
+
+  /* ----- Movimiento ----- */
+  --transicion: 160ms ease;
+}
