@@ -1,0 +1,86 @@
+/* BLOQUE: PIE DE PÁGINA */
+
+.pie {
+  padding-block: var(--e-8) var(--e-6);
+  background: var(--color-fondo-profundo);
+  color: rgb(255 255 255 / 0.86);
+  font-size: var(--t-sm);
+}
+
+.pie__rejilla {
+  display: grid;
+  gap: var(--e-6);
+}
+
+.pie__nombre {
+  color: var(--color-texto-claro);
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-xl);
+  line-height: 1.1;
+}
+
+.pie__texto {
+  max-width: 24rem;
+  margin-top: var(--e-2);
+}
+
+.pie__titulo {
+  margin-bottom: var(--e-3);
+  color: var(--color-queso);
+  font-weight: 700;
+}
+
+.pie__lista {
+  display: grid;
+  gap: var(--e-3);
+}
+
+.pie__lista strong {
+  display: block;
+  color: var(--color-texto-claro);
+}
+
+.pie__lista--enlaces a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 32px;
+  color: var(--color-texto-claro);
+}
+
+.pie__lista--secciones {
+  margin-top: var(--e-4);
+}
+
+.pie__lista--secciones a {
+  color: rgb(255 255 255 / 0.86);
+}
+
+.pie__base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: var(--e-7);
+  padding-top: var(--e-5);
+  color: rgb(255 255 255 / 0.72);
+  font-size: var(--t-xs);
+  background-image: linear-gradient(rgb(255 255 255 / 0.18), rgb(255 255 255 / 0.18));
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: calc(100% - 2 * var(--margen-lateral)) 1px;
+}
+
+/* Deja lugar para la barra "Ver mi pedido" en celular */
+@media (max-width: 699px) {
+  .pie {
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .pie__rejilla {
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: var(--e-7);
+  }
+}

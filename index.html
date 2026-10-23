@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--
+    SEGURIDAD: política de contenido estricta. Solo se permite cargar
+    scripts, estilos, fuentes e imágenes desde este mismo sitio.
+    Por eso no hay <script> ni style="" escritos dentro del HTML.
+    (El hosting también aplica la misma política por cabeceras: ver _headers y .htaccess)
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Título y descripción: se ven en Google y al compartir el link por WhatsApp.
+       Si cambian el nombre del negocio, actualizar acá también (ver README). -->
+  <title>Almacén de Fiambres | Fiambres y quesos desde 50 g</title>
+  <meta name="description" content="Fiambres, quesos y embutidos desde 50 g. Armá tu pedido online y retiralo en la sucursal que prefieras.">
+  <meta name="theme-color" content="#0f0d0c">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Almacén de Fiambres">
+  <meta property="og:description" content="Fiambres, quesos y embutidos desde 50 g. Armá tu pedido y mandalo por WhatsApp.">
+  <!-- Para que se vea una imagen al compartir: subir img/compartir.jpg (1200x630) y
+       reemplazar por la dirección completa, ej: https://www.tudominio.com.ar/img/compartir.jpg
+  <meta property="og:image" content="https://www.tudominio.com.ar/img/compartir.jpg">
+  -->
+
+  <link rel="icon" href="img/favicon.png" type="image/png">
+
+  <link rel="preload" href="fonts/young-serif-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/hanken-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Estilos: identidad primero, después la base, los componentes y un archivo por bloque -->
+  <link rel="stylesheet" href="css/fuentes.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/componentes.css">
+  <link rel="stylesheet" href="css/bloques/encabezado.css">
+  <link rel="stylesheet" href="css/bloques/hero.css">
+  <link rel="stylesheet" href="css/bloques/productos.css">
+  <link rel="stylesheet" href="css/bloques/pedido.css">
+  <link rel="stylesheet" href="css/bloques/mayoristas.css">
+  <link rel="stylesheet" href="css/bloques/sucursales.css">
+  <link rel="stylesheet" href="css/bloques/pie.css">
+  <link rel="stylesheet" href="css/bloques/boton-whatsapp.css">
+  <!-- Para sumar un bloque nuevo: agregar acá su CSS (ver README) -->
+
+  <!-- Scripts (el orden importa): base → datos → utilidades → bloques → arranque -->
+  <script defer src="js/core/namespace.js"></script>
+
+  <script defer src="data/sitio.js"></script>
+  <script defer src="data/sucursales.js"></script>
+  <script defer src="data/productos.js"></script>
+  <script defer src="data/mayoristas.js"></script>
+
+  <script defer src="js/core/util.js"></script>
+  <script defer src="js/core/iconos.js"></script>
+  <script defer src="js/core/estado-pedido.js"></script>
+
+  <script defer src="js/bloques/encabezado.js"></script>
+  <script defer src="js/bloques/hero.js"></script>
+  <script defer src="js/bloques/productos.js"></script>
+  <script defer src="js/bloques/pedido.js"></script>
+  <script defer src="js/bloques/mayoristas.js"></script>
+  <script defer src="js/bloques/sucursales.js"></script>
+  <script defer src="js/bloques/pie.js"></script>
+  <script defer src="js/bloques/boton-whatsapp.js"></script>
+  <!-- Para sumar un bloque nuevo: agregar acá su JS (ver README) -->
+
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- Zonas fijas. Su contenido lo arma cada bloque (js/bloques). -->
+  <div id="aviso"></div>
+  <header id="encabezado"></header>
+
+  <!-- Las secciones se agregan acá solas, en el orden de data/sitio.js → bloques -->
+  <main id="contenido" tabindex="-1"></main>
+
+  <footer id="pie"></footer>
+  <div id="pedido"></div>
+  <div id="whatsapp"></div>
+
+  <noscript>
+    <p class="aviso-sin-js">
+      Para ver los productos y armar tu pedido necesitás activar JavaScript en el navegador.
+    </p>
+  </noscript>
+</body>
+</html>

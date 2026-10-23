@@ -1,0 +1,43 @@
+/* BLOQUE: BOTÓN FLOTANTE DE WHATSAPP */
+
+.whatsapp-flotante {
+  position: fixed;
+  right: var(--e-3);
+  bottom: var(--e-3);
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-width: 56px;
+  height: 56px;
+  padding-inline: 14px;
+  border-radius: var(--radio-pildora);
+  background: var(--color-whatsapp);
+  color: #fff;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgb(15 123 65 / 0.35);
+  transition: background-color var(--transicion);
+}
+
+.whatsapp-flotante:hover {
+  background: var(--color-whatsapp-oscuro);
+}
+
+.whatsapp-flotante__texto {
+  display: none;
+}
+
+@media (min-width: 700px) {
+  .whatsapp-flotante {
+    right: var(--e-5);
+    bottom: var(--e-5);
+    padding-inline: 18px;
+  }
+
+  .whatsapp-flotante__texto {
+    display: inline;
+  }
+}

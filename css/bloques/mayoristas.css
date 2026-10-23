@@ -1,0 +1,191 @@
+/* BLOQUE: CLIENTES PROVEEDORES (mayoristas) */
+
+.bloque--mayoristas {
+  background: var(--color-panel);`r`n  color: var(--color-texto-claro);
+}
+
+.bloque--mayoristas h2 {
+  color: var(--color-texto-claro);
+}
+
+.mayoristas__rejilla {
+  display: grid;
+  gap: var(--e-7);
+  align-items: start;
+}
+
+.mayoristas__bajada {
+  margin-top: var(--e-3);
+  color: rgb(255 255 255 / 0.86);
+  font-size: var(--t-lg);
+  line-height: 1.5;
+}
+
+.mayoristas__beneficios {
+  display: grid;
+  gap: var(--e-3);
+  margin-top: var(--e-5);
+}
+
+.mayoristas__beneficios li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.mayoristas__beneficios .icono {
+  margin-top: 0.15rem;
+  color: var(--color-queso);
+}
+
+.mayoristas__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: var(--e-6);
+}
+
+/* ----- Panel de precios ----- */
+.precios {
+  padding: var(--e-5);
+  border-radius: var(--radio-medio);
+  background: var(--color-papel);
+  color: var(--color-tinta);
+}
+
+.precios__nota {
+  margin-top: var(--e-4);
+  color: var(--color-tinta-suave);
+  font-size: var(--t-xs);
+}
+
+.precios--reservado {
+  display: grid;
+  justify-items: start;
+  gap: var(--e-3);
+}
+
+.precios__reservado-titulo {
+  color: var(--color-primario);
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-xl);
+  line-height: 1.15;
+}
+
+.precios--reservado .boton {
+  margin-top: var(--e-2);
+}
+
+/* ----- Tabla ----- */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-sm);
+}
+
+.tabla__titulo {
+  padding-bottom: var(--e-3);
+  color: var(--color-primario);
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-xl);
+  line-height: 1.15;
+  text-align: left;
+}
+
+.tabla__fecha {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--color-tinta-suave);
+  font-family: var(--fuente-texto);
+  font-size: var(--t-xs);
+}
+
+.tabla th,
+.tabla td {
+  padding: 0.7rem 0.5rem;
+  border-bottom: 1px solid var(--color-linea);
+  text-align: left;
+  vertical-align: baseline;
+}
+
+.tabla thead th {
+  color: var(--color-tinta-suave);
+  font-size: var(--t-xs);
+  font-weight: 700;
+}
+
+.tabla .tabla__num {
+  text-align: right;
+}
+
+.tabla .tabla__producto {
+  font-weight: 700;
+}
+
+.tabla .tabla__precio {
+  color: var(--color-primario);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ----- Celular: cada fila pasa a ser un bloque apilado ----- */
+@media (max-width: 699px) {
+  .tabla thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .tabla tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--e-4);
+    padding-block: 0.8rem;
+    border-bottom: 1px solid var(--color-linea);
+  }
+
+  .tabla th,
+  .tabla td {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+
+  .tabla .tabla__producto {
+    grid-column: 1;
+    font-size: var(--t-base);
+  }
+
+  .tabla td:nth-child(2),
+  .tabla td:nth-child(3) {
+    grid-column: 1;
+    color: var(--color-tinta-suave);
+    font-size: var(--t-xs);
+  }
+
+  .tabla td:nth-child(3)::before {
+    content: 'Mínimo: ';
+  }
+
+  .tabla .tabla__precio {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: center;
+    font-size: var(--t-lg);
+  }
+}
+
+/* ----- Escritorio ----- */
+@media (min-width: 960px) {
+  .mayoristas__rejilla {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--e-8);
+  }
+
+  .precios {
+    padding: var(--e-6);
+  }
+}

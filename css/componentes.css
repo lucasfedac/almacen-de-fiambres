@@ -1,0 +1,459 @@
+/* Componentes reutilizables: botones, chips, selector de cantidad, campos, ticket */
+
+.icono {
+  flex: none;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid transparent;
+  border-radius: var(--radio-pildora);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion), border-color var(--transicion), transform var(--transicion);
+}
+
+.boton:active {
+  transform: translateY(1px);
+}
+
+.boton--primario {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+.boton--primario:hover {
+  background: var(--color-primario-oscuro);
+}
+
+.boton--contorno {
+  border-color: var(--color-primario);
+  background: transparent;
+  color: var(--color-primario);
+}
+
+.boton--contorno:hover {
+  background: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+.boton--contorno-claro {
+  border-color: rgb(255 255 255 / 0.65);
+  background: transparent;
+  color: var(--color-texto-claro);
+}
+
+.boton--contorno-claro:hover {
+  background: var(--color-texto-claro);`r`n  color: var(--color-fondo-profundo);
+}
+
+.boton--queso {
+  background: var(--color-queso);
+  color: var(--color-tinta);
+}
+
+.boton--queso:hover {
+  background: var(--color-blanco);
+}
+
+.boton--whatsapp {
+  background: var(--color-whatsapp);
+  color: #fff;
+}
+
+.boton--whatsapp:hover {
+  background: var(--color-whatsapp-oscuro);
+}
+
+.boton--agregar {
+  min-height: 44px;
+  padding: 0.5rem 1rem 0.5rem 0.8rem;
+  border-color: var(--color-jamon);
+  background: var(--color-jamon-suave);
+  color: var(--color-primario);
+}
+
+.boton--agregar:hover {
+  border-color: var(--color-primario);
+  background: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+.boton--ancho {
+  width: 100%;
+}
+
+.enlace-boton {
+  padding: 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--color-primario);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Chips de categoría ---------- */
+.chip {
+  min-height: 42px;
+  padding: 0.4rem 1.05rem;
+  border: 1.5px solid var(--color-linea-fuerte);
+  border-radius: var(--radio-pildora);
+  background: var(--color-blanco);
+  color: var(--color-tinta);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion), border-color var(--transicion);
+}
+
+.chip:hover {
+  border-color: var(--color-primario);
+}
+
+.chip[aria-pressed='true'] {
+  border-color: var(--color-primario);
+  background: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+/* ---------- Selector de cantidad  [ −  150 g  + ] ---------- */
+.paso {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: var(--radio-pildora);
+  background: var(--color-primario);
+  color: var(--color-blanco);
+}
+
+.paso__boton {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color var(--transicion);
+}
+
+.paso__boton:hover:not(:disabled) {
+  background: rgb(255 255 255 / 0.2);
+}
+
+.paso__boton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.paso__valor {
+  min-width: 4.6ch;
+  padding-inline: 0.15rem;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* ---------- Formularios ---------- */
+.campo {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.campo-grupo {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.campo__etiqueta {
+  padding: 0;
+  font-size: var(--t-sm);
+  font-weight: 700;
+}
+
+.campo__opcional {
+  font-weight: 400;
+  color: var(--color-tinta-suave);
+}
+
+.campo__control {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--color-linea-fuerte);
+  border-radius: var(--radio-chico);
+  background: var(--color-blanco);
+}
+
+.campo__control--area {
+  resize: vertical;
+  min-height: 76px;
+}
+
+.campo__control[aria-invalid='true'] {
+  border-color: var(--color-error);
+}
+
+.campo__error {
+  color: var(--color-error);
+  font-size: var(--t-xs);
+  font-weight: 600;
+}
+
+.campo__error:empty {
+  display: none;
+}
+
+/* Opciones tipo tarjeta (elegir sucursal) */
+.opcion {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid var(--color-linea);
+  border-radius: var(--radio-medio);
+  background: var(--color-blanco);
+  cursor: pointer;
+}
+
+.opcion:has(.opcion__radio:checked) {
+  border-color: var(--color-primario);
+  background: var(--color-jamon-suave);
+}
+
+.opcion__radio {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--color-primario);
+}
+
+.opcion__texto {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.opcion__direccion {
+  font-size: var(--t-sm);
+  color: var(--color-tinta-suave);
+}
+
+.opcion__estado {
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--color-tinta-suave);
+}
+
+.opcion__estado--abierto {
+  color: var(--color-oliva);
+}
+
+/* ---------- Estado "abierto ahora" ---------- */
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--color-tinta-suave);
+}
+
+.estado__punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-linea-fuerte);
+}
+
+.estado--abierto {
+  color: var(--color-oliva);
+}
+
+.estado--abierto .estado__punto {
+  background: var(--color-oliva);
+  box-shadow: 0 0 0 4px rgb(79 91 46 / 0.18);
+}
+
+/* ---------- TICKET DE BALANZA ----------
+   Es el motivo visual del sitio: papel blanco con borde dentado,
+   letra de ticket y puntos guía entre el nombre y el precio. */
+.ticket {
+  --ticket-fondo: var(--color-blanco);
+  position: relative;
+  padding: 1.1rem 1.1rem 1rem;
+  background: var(--ticket-fondo);
+  color: var(--color-tinta);
+  font-family: var(--fuente-ticket);
+  font-size: var(--t-xs);
+  line-height: 1.45;
+  filter: drop-shadow(0 6px 14px rgb(0 0 0 / 0.45));
+}
+
+.ticket::before,
+.ticket::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background-repeat: repeat-x;
+  background-size: 16px 100%;
+}
+
+/* borde superior: puntas hacia arriba */
+.ticket::before {
+  bottom: 100%;
+  background-image: conic-gradient(from 135deg at 50% 0, var(--ticket-fondo) 0 90deg, transparent 0);
+}
+
+/* borde inferior: puntas hacia abajo */
+.ticket::after {
+  top: 100%;
+  background-image: conic-gradient(from -45deg at 50% 100%, var(--ticket-fondo) 0 90deg, transparent 0);
+}
+
+.ticket__titulo {
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px dashed var(--color-linea-fuerte);
+  font-weight: 600;
+}
+
+.ticket__lista {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.ticket__fila,
+.ticket__total {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.ticket__nombre {
+  font-weight: 600;
+}
+
+.ticket__puntos {
+  flex: 1;
+  min-width: 0.75rem;
+  border-bottom: 2px dotted var(--color-linea-fuerte);
+  transform: translateY(-0.2em);
+}
+
+.ticket__precio {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Ticket mini (portada) */
+.ticket--mini .ticket__nombre {
+  font-weight: 400;
+}
+
+/* Ticket del pedido */
+.ticket--pedido {
+  margin-block: 8px;
+  font-size: var(--t-sm);
+}
+
+.ticket--pedido .ticket__lista {
+  gap: 0.9rem;
+}
+
+.ticket__linea {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.ticket__detalle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ticket__detalle .ticket__puntos {
+  align-self: center;
+  transform: none;
+}
+
+.paso--ticket {
+  padding: 1px;
+  border: 1.5px solid var(--color-linea-fuerte);
+  background: transparent;
+  color: var(--color-tinta);
+}
+
+.paso--ticket .paso__boton:hover:not(:disabled) {
+  background: var(--color-jamon-suave);
+}
+
+.paso--ticket .paso__valor {
+  min-width: 5ch;
+  font-family: var(--fuente-ticket);
+  font-size: var(--t-xs);
+}
+
+.paso__boton--chico {
+  width: 30px;
+  height: 30px;
+}
+
+.ticket__quitar {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-tinta-suave);
+  cursor: pointer;
+}
+
+.ticket__quitar:hover {
+  background: var(--color-jamon-suave);
+  color: var(--color-error);
+}
+
+.ticket__total {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 2px dashed var(--color-linea-fuerte);
+  font-size: var(--t-base);
+  font-weight: 600;
+}
+
+.ticket__precio--total {
+  font-weight: 600;
+}
+
+.ticket__nota {
+  margin-top: 0.6rem;
+  color: var(--color-tinta-suave);
+  font-size: var(--t-xs);
+}

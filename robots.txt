@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Cuando tengan dominio, agregar acá la dirección del sitemap, por ejemplo:
+# Sitemap: https://www.tudominio.com.ar/sitemap.xml

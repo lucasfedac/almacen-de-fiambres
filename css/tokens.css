@@ -1,0 +1,74 @@
+/*
+  IDENTIDAD VISUAL
+  Todos los colores, tipografías y medidas del sitio están acá.
+  Para adaptar la web a la marca (por ejemplo, a los colores del logo),
+  alcanza con cambiar estos valores: el resto del CSS no tiene colores sueltos.
+*/
+:root {
+  color-scheme: dark;
+
+  /* ----- Colores de marca ----- */
+  --color-primario: #f1e7da;          /* crema: títulos, botones principales (sobre fondo oscuro) */
+  --color-primario-oscuro: #ffffff;   /* hover de los botones principales */
+  --color-primario-claro: #c9a47a;
+  --color-jamon: #3b2622;             /* superficies suaves */
+  --color-jamon-suave: #2a1c19;
+  --color-queso: #edb23b;             /* amarillo provolone: acentos */
+  --color-oliva: #b4c47a;             /* "abierto ahora" */
+
+  /* ----- Neutros ----- */
+  --color-papel: #0f0d0c;             /* fondo general (negro cálido, como el logo) */
+  --color-blanco: #1b1816;             /* superficies (tarjetas, tickets) y texto sobre botones claros */
+  --color-tinta: #f1e7da;             /* texto */
+  --color-tinta-suave: #b5a89d;       /* texto secundario */
+  --color-linea: #2f2825;             /* bordes finos */
+  --color-linea-fuerte: #54483f;      /* puntos guía, bordes marcados */
+
+  /* ----- Estados ----- */
+  --color-whatsapp: #0f7b41;
+  --color-whatsapp-oscuro: #0a5f31;
+  --color-error: #ff8a8f;
+
+  /* ----- Modo oscuro ----- */
+  --color-texto-claro: #f6efe6;       /* texto sobre fondos oscuros fijos */
+  --color-panel: #261612;             /* franja de proveedores (bordó muy oscuro) */
+  --color-fondo-profundo: #080706;    /* pie de página */
+
+  /* ----- Tipografías ----- */
+  --fuente-titulo: 'Young Serif', 'Iowan Old Style', Georgia, serif;
+  --fuente-texto: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fuente-ticket: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+
+  /* ----- Escala de tamaños ----- */
+  --t-xs: 0.8125rem;
+  --t-sm: 0.9375rem;
+  --t-base: 1.0625rem;
+  --t-lg: 1.25rem;
+  --t-xl: 1.625rem;
+  --t-2xl: clamp(2rem, 1.5rem + 2vw, 2.875rem);
+  --t-3xl: clamp(2.5rem, 1.6rem + 4vw, 4.5rem);
+
+  /* ----- Espacios ----- */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+  --e-8: 4.5rem;
+  --espacio-seccion: clamp(3.5rem, 2rem + 6vw, 6.5rem);
+
+  /* ----- Formas ----- */
+  --radio-chico: 6px;
+  --radio-medio: 14px;
+  --radio-pildora: 999px;
+
+  /* ----- Medidas de maquetado ----- */
+  --ancho-contenedor: 1180px;
+  --margen-lateral: clamp(1rem, 4vw, 2.5rem);
+  --alto-encabezado: 64px;
+
+  /* ----- Movimiento ----- */
+  --transicion: 160ms ease;
+}
