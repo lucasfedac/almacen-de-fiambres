@@ -27,7 +27,7 @@ Fiambreria.datos.sucursales = [
     localidad: 'Tu ciudad',
     referencia: 'A media cuadra de la plaza',
     telefono: '0000 00-0000',
-    whatsapp: '5491100000001',
+    whatsapp: '5491128336557',
     mapa: '',
     horarios: [
       { dias: [1, 2, 3, 4, 5], desde: '08:30', hasta: '20:30' },
@@ -41,7 +41,7 @@ Fiambreria.datos.sucursales = [
     localidad: 'Tu ciudad',
     referencia: '',
     telefono: '0000 00-0001',
-    whatsapp: '5491100000002',
+    whatsapp: '5491128336557',
     mapa: '',
     horarios: [
       { dias: [1, 2, 3, 4, 5], desde: '09:00', hasta: '13:00' },
@@ -56,7 +56,7 @@ Fiambreria.datos.sucursales = [
     localidad: 'Tu ciudad',
     referencia: 'Esquina Alsina',
     telefono: '',
-    whatsapp: '5491100000003',
+    whatsapp: '5491128336557',
     mapa: '',
     horarios: [
       { dias: [1, 2, 3, 4, 5, 6], desde: '08:00', hasta: '20:00' },

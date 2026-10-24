@@ -22,7 +22,7 @@ Fiambreria.datos.sitio = {
 
   // WhatsApp general, con código de país y sin +, espacios ni guiones.
   // Argentina celular: 54 9 + código de área + número  →  5491123456789
-  whatsapp: '5491100000000',
+  whatsapp: '5491128336557',
   mensajeWhatsApp: 'Hola! Quería hacer una consulta.',
 
   // Redes (dejá vacío lo que no tengan). Tienen que ser links completos con https://
