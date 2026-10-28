@@ -88,7 +88,7 @@ cliente las agrega al mismo pedido que los productos y las cuenta **por unidad**
   pedido de alguien se saca. Si no queda ninguna promo vigente, la sección entera desaparece.
 - **Destacarla:** `destacada: true` la muestra primero y con una etiqueta.
 - **Sacarla:** borrá su línea.
-- **Cuántas se ven al principio:** `data/sitio.js` → `promos.visiblesAlInicio` (el resto aparece con "Ver más promos"; `0` = todas).
+- **Cuántas se ven al principio:** `data/sitio.js` → `promos.visiblesAlInicio` (el resto aparece con "Ver más promos"; `0` = todas, que es como está ahora).
 
 ### Cambiar el WhatsApp o el nombre
 `data/sitio.js` → `whatsapp` (con código de país, sin `+` ni espacios: `5491123456789`) y `nombre`.
@@ -107,8 +107,9 @@ usan `dias: [1..7]` (1 = lunes). Si abre cortado (mañana y tarde) cargá dos tu
 mismos días. El cartel "Abierto ahora / Cerrado" se calcula solo con hora argentina.
 
 ### Ocultar o reordenar secciones
-`data/sitio.js` → `bloques: ['hero', 'productos', 'mayoristas', 'sucursales']`.
-Borrá un nombre para ocultar esa sección, o cambiá el orden.
+`data/sitio.js` → `bloques: ['hero', 'promos', 'productos', 'mayoristas', 'sucursales']`.
+Borrá un nombre para ocultar esa sección, o cambiá el orden. Ahora las Promos van primero y Productos en segundo lugar.
+El botón principal de la portada ("Armar mi pedido") lleva a Promos: se cambia en `data/sitio.js` → `hero.botonPrincipal.destino`.
 
 ### Quitar el cartel amarillo de "datos de ejemplo"
 Cuando estén cargados los datos reales: `data/sitio.js` → `datosDeEjemplo: false`.

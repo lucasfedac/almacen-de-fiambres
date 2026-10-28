@@ -33,7 +33,7 @@ Fiambreria.datos.sitio = {
 
   // Secciones que se muestran, en este orden.
   // Para ocultar una, borrá su línea. Para sumar una nueva, mirá el README.
-  bloques: ['hero', 'productos', 'promos', 'mayoristas', 'sucursales'],
+  bloques: ['hero', 'promos', 'productos', 'mayoristas', 'sucursales'],
 
   // ---------- Textos de cada sección ----------
 
@@ -43,7 +43,7 @@ Fiambreria.datos.sitio = {
     // Foto principal (ej: 'img/hero.jpg'). Vacío = se muestra un diseño de baldosas.
     imagen: 'img/hero.jpg',
     imagenAlt: 'Logo de Almacén de Fiambres',
-    botonPrincipal: { texto: 'Armar mi pedido', destino: '#productos' },
+    botonPrincipal: { texto: 'Armar mi pedido', destino: '#promos' },
     botonSecundario: { texto: 'Ver sucursales', destino: '#sucursales' },
     // Cuántos productos "destacados" se muestran en el papelito del hero (los marcás en productos.js)
     cantidadDestacados: 4,
@@ -68,7 +68,7 @@ Fiambreria.datos.sitio = {
     titulo: 'Promos',
     bajada: 'Combos armados para que lleves más por menos. Sumá las que quieras a tu pedido, junto con otros productos, y enviá todo por WhatsApp.',
     // Cuántas promos se ven al principio; el resto aparece con el botón "Ver más". 0 = mostrar todas.
-    visiblesAlInicio: 6,
+    visiblesAlInicio: 0,
     botonVerMas: 'Ver más promos'
   },
 
