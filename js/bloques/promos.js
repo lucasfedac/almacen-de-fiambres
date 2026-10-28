@@ -1,24 +1,55 @@
 /*
   BLOQUE: PROMOS
-  Tarjetas con la foto, el precio y un botón que abre WhatsApp con el pedido de esa promo.
+  Tarjetas con la foto y el precio. Cada promo se suma al pedido por unidades
+  (el mismo pedido que usan los productos; se envía desde el panel "Mi pedido").
   Textos: data/sitio.js → promos.   Promos y precios: data/promos.js
   Si no hay ninguna promo vigente, la sección no se muestra.
 */
 (function () {
   'use strict';
   const F = window.Fiambreria;
-  const { h, icono, formatoPesos, formatoFecha, linkWhatsApp } = F.util;
+  const { h, icono, formatoPesos, formatoFecha, promoVigente } = F.util;
+  const pedido = F.pedido;
 
   const UNIDADES = { combo: 'combo', kilo: 'por kilo', '100g': 'cada 100 g' };
 
-  // Fecha de hoy en Argentina, como "AAAA-MM-DD" (para comparar con "hasta")
-  function hoyEnArgentina() {
-    return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' }).format(new Date());
+  /* Botón "Agregar" que se convierte en [−  × 2  +] cuando la promo está en el pedido */
+  function crearControl(p) {
+    const btnAgregar = h('button', {
+      type: 'button', class: 'boton boton--agregar', 'aria-label': 'Agregar ' + p.titulo + ' al pedido',
+      onclick() { pedido.agregarPromo(p.id); btnMas.focus(); }
+    }, icono('mas', { tam: 18 }), 'Agregar');
+
+    const valor = h('span', { class: 'paso__valor' });
+    const btnMenos = h('button', {
+      type: 'button', class: 'paso__boton', 'aria-label': 'Sacar una unidad de ' + p.titulo,
+      onclick() {
+        const eraUltima = pedido.unidadesPromo(p.id) <= 1;
+        pedido.cambiarPromo(p.id, -1);
+        if (eraUltima) btnAgregar.focus();
+      }
+    }, icono('menos', { tam: 18 }));
+    const btnMas = h('button', {
+      type: 'button', class: 'paso__boton', 'aria-label': 'Sumar una unidad de ' + p.titulo,
+      onclick() { pedido.cambiarPromo(p.id, +1); }
+    }, icono('mas', { tam: 18 }));
+
+    const paso = h('div', { class: 'paso', role: 'group', 'aria-label': 'Cantidad de ' + p.titulo }, btnMenos, valor, btnMas);
+    const el = h('div', { class: 'promo__control' }, btnAgregar, paso);
+
+    function actualizar() {
+      const u = pedido.unidadesPromo(p.id);
+      btnAgregar.hidden = u > 0;
+      paso.hidden = u === 0;
+      valor.textContent = '× ' + u;
+      btnMas.disabled = u >= pedido.MAX_UNIDADES;
+      el.closest('.promo')?.classList.toggle('promo--en-pedido', u > 0);
+    }
+    return { el, actualizar };
   }
 
   function vigentes(items) {
-    const hoy = hoyEnArgentina();
-    const activas = items.filter((p) => !p.hasta || p.hasta >= hoy);
+    const activas = items.filter(promoVigente);
     // las destacadas primero; entre iguales se respeta el orden del archivo
     return [...activas.filter((p) => p.destacada), ...activas.filter((p) => !p.destacada)];
   }
@@ -31,15 +62,12 @@
       const promos = vigentes(F.datos.promos.items);
       if (!promos.length) return false; // main.js omite la sección (y su lugar en el menú)
 
-      const numero = F.datos.sitio.whatsapp;
+      const controles = new Map();
       const visibles = t.visiblesAlInicio > 0 ? t.visiblesAlInicio : promos.length;
 
-      function mensajeDe(p) {
-        return t.mensaje.replace('{promo}', () => p.titulo).replace('{precio}', () => formatoPesos(p.precio));
-      }
-
       function tarjeta(p) {
-        const url = linkWhatsApp(numero, mensajeDe(p));
+        const control = crearControl(p);
+        controles.set(p.id, control);
         return h('li', { class: 'promo' + (p.destacada ? ' promo--destacada' : '') },
           p.imagen ? h('img', {
             class: 'promo__foto', src: p.imagen, alt: p.titulo + ': ' + p.descripcion, width: 800, height: 800, loading: 'lazy'
@@ -53,14 +81,14 @@
               h('span', { class: 'promo__unidad', texto: UNIDADES[p.unidad] || '' })
             ),
             p.hasta ? h('p', { class: 'promo__vigencia', texto: 'Hasta el ' + formatoFecha(p.hasta) }) : null,
-            url ? h('a', { class: 'boton boton--whatsapp boton--ancho', href: url, target: '_blank', rel: 'noopener noreferrer' },
-              icono('whatsapp', { tam: 20 }), t.boton
-            ) : null
+            control.el
           )
         );
       }
 
       const tarjetas = promos.map(tarjeta);
+      pedido.suscribir(() => controles.forEach((c) => c.actualizar()));
+      controles.forEach((c) => c.actualizar());
       tarjetas.slice(visibles).forEach((li) => { li.hidden = true; });
 
       const hijos = [

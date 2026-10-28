@@ -21,7 +21,7 @@ Options -Indexes
 # </IfModule>
 
 # No publicar archivos internos
-<FilesMatch "^(README|CLAUDE)\.md$">
+<FilesMatch "^(README|CLAUDE)\.md$|^servidor-dev\.py$">
   Require all denied
 </FilesMatch>
 
@@ -29,8 +29,15 @@ Options -Indexes
   Require all denied
 </FilesMatch>
 
-# Caché para las fuentes
+# Caché: las fuentes se guardan un año; la página, los scripts, los estilos y los datos
+# se revalidan en cada visita (si no cambiaron, el servidor responde "sin cambios" y no se
+# vuelven a bajar). Así nadie ve archivos viejos mezclados con nuevos después de una actualización.
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|js|css)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
 </IfModule>

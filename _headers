@@ -12,3 +12,21 @@
 
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+# La página, los scripts, los estilos y los datos se revalidan en cada visita:
+# si no cambiaron no se vuelven a bajar, y si cambiaron se ven enseguida
+# (así nadie queda con archivos viejos mezclados con nuevos después de una actualización).
+/
+  Cache-Control: no-cache
+
+/index.html
+  Cache-Control: no-cache
+
+/js/*
+  Cache-Control: no-cache
+
+/css/*
+  Cache-Control: no-cache
+
+/data/*
+  Cache-Control: no-cache

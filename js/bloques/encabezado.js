@@ -47,7 +47,7 @@
         cuenta.classList.toggle('boton-pedido__cuenta--vacia', n === 0);
         monto.textContent = n ? formatoPesos(F.pedido.total()) : '';
         botonPedido.querySelector('#boton-pedido-lector').textContent =
-          n ? ', ' + n + (n === 1 ? ' producto, ' : ' productos, ') + formatoPesos(F.pedido.total()) : ', vacío';
+          n ? ', ' + n + (n === 1 ? ' artículo, ' : ' artículos, ') + formatoPesos(F.pedido.total()) : ', vacío';
         if (n !== cantidadPrevia) {
           botonPedido.classList.remove('boton-pedido--salta');
           void botonPedido.offsetWidth; // reinicia la animación

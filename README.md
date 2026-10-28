@@ -11,12 +11,20 @@ teléfonos, textos) está en la carpeta `data/`**.
 Desde una terminal, dentro de esta carpeta:
 
 ```
-python3 -m http.server 8000
+python3 servidor-dev.py
 ```
 
 Abrí `http://localhost:8000` en el navegador. Para frenarlo: `Ctrl + C`.
 (Se usa un servidor local en vez de abrir `index.html` con doble clic porque así se
 comporta igual que cuando esté publicada.)
+
+`servidor-dev.py` es como `python3 -m http.server 8000`, pero le pide al navegador que **no guarde
+copias** de los archivos. Con el servidor común, el navegador puede quedarse con un archivo viejo
+y mezclarlo con uno nuevo: la web "se rompe" o una sección desaparece hasta que se fuerza la recarga.
+Si usás el servidor común igual, recargá con `Ctrl + Shift + R`.
+
+Opciones: otro puerto (`python3 servidor-dev.py 9000`) o verla desde el celular conectado al mismo wifi
+(`python3 servidor-dev.py 8000 0.0.0.0` y abrir `http://IP-DE-LA-COMPU:8000` desde el celular).
 
 ---
 
@@ -24,9 +32,11 @@ comporta igual que cuando esté publicada.)
 
 ```
 index.html            Estructura mínima. No hay que tocarlo salvo para sumar un bloque nuevo.
+servidor-dev.py       Para ver la web en tu compu (sección 1). No hace falta subirlo al hosting.
 data/                 ← LO QUE SE EDITA SEGUIDO
   sitio.js              Nombre, WhatsApp, logo, textos de cada sección, qué secciones se ven
   productos.js          Productos, categorías y precios (por 50 g o por 100 g)
+  promos.js             Promos (combos) con su foto, precio y fecha de vencimiento
   sucursales.js         Las 3 sucursales: dirección, teléfono, WhatsApp, horarios
   mayoristas.js         Lista de precios para clientes proveedores
 css/
@@ -39,6 +49,7 @@ js/
   main.js               Arma la página según data/sitio.js
 img/                    Logo y fotos
   productos/            Fotos chicas de productos (opcional)
+  promos/               Fotos de las promos (cuadradas, ~800 px)
 fonts/                  Tipografías (van incluidas, no se cargan de internet)
 .htaccess / _headers    Reglas de seguridad del hosting (ver sección 6)
 ```
@@ -66,6 +77,19 @@ Sumala a la lista `categorias` (arriba en `data/productos.js`) y usá su `id` en
 Guardá la foto chica (cuadrada, ~200 px, `.jpg` o `.webp`) en `img/productos/` y agregá
 `imagen: 'img/productos/jamon-cocido.jpg'` al producto. Si la foto no carga, se muestra sin foto.
 
+### Cambiar el precio de una promo, o agregar una
+Abrí `data/promos.js`. Para cambiar el precio, modificá el número de `precio`. Para agregar una promo,
+copiá una línea `{ ... }`, pegala debajo (con su coma) y cambiá los datos. Las promos son combos: el
+cliente las agrega al mismo pedido que los productos y las cuenta **por unidad** (2 × Promo 4), no por gramos.
+
+- **Foto:** guardala en `img/promos/` (cuadrada, ~800 px de ancho, `.jpg` o `.webp`) y poné su ruta en `imagen`.
+  El nombre y el precio tienen que cargarse también en `titulo` y `precio` (no alcanza con que estén escritos en la foto).
+- **Que venza sola:** `hasta: '2026-11-30'` (año-mes-día). Pasada esa fecha la promo se oculta sola, y si estaba en el
+  pedido de alguien se saca. Si no queda ninguna promo vigente, la sección entera desaparece.
+- **Destacarla:** `destacada: true` la muestra primero y con una etiqueta.
+- **Sacarla:** borrá su línea.
+- **Cuántas se ven al principio:** `data/sitio.js` → `promos.visiblesAlInicio` (el resto aparece con "Ver más promos"; `0` = todas).
+
 ### Cambiar el WhatsApp o el nombre
 `data/sitio.js` → `whatsapp` (con código de país, sin `+` ni espacios: `5491123456789`) y `nombre`.
 Cada sucursal puede tener su propio WhatsApp en `data/sucursales.js`; el pedido se envía al de la
@@ -91,38 +115,41 @@ Cuando estén cargados los datos reales: `data/sitio.js` → `datosDeEjemplo: fa
 
 ---
 
-## 4. Agregar una sección nueva (por ejemplo "Promos" o "Sobre nosotros")
+## 4. Agregar una sección nueva (por ejemplo "Novedades" o "Sobre nosotros")
 
 Cada sección es un **bloque** independiente: si uno falla, el resto del sitio sigue andando.
-Ejemplo con un bloque llamado `promos`:
+Ejemplo con un bloque llamado `novedades` (la sección de Promos que ya existe también se armó así: mirá `js/bloques/promos.js` como modelo):
 
-1. **Crear `js/bloques/promos.js`:**
+1. **Crear `js/bloques/novedades.js`:**
    ```js
    (function () {
      'use strict';
      const F = window.Fiambreria;
      const { h } = F.util;
 
-     F.bloques.promos = {
-       id: 'promos',        // el # del link (tudominio.com/#promos)
-       menu: 'Promos',      // texto en el menú; null = no aparece en el menú
+     F.bloques.novedades = {
+       id: 'novedades',     // el # del link (tudominio.com/#novedades)
+       menu: 'Novedades',   // texto en el menú; null = no aparece en el menú
        montar(seccion) {
          seccion.append(
            h('div', { class: 'contenedor' },
-             h('h2', { texto: 'Promos de la semana' }),
-             h('p', { texto: 'Jamón y queso, $5.000 el kilo.' })
+             h('h2', { texto: 'Novedades de la semana' }),
+             h('p', { texto: 'Llegó el queso de cabra.' })
            )
          );
        }
      };
    })();
    ```
-2. **Crear `css/bloques/promos.css`** (opcional) con los estilos. Usá los colores de `tokens.css`
+2. **Crear `css/bloques/novedades.css`** (opcional) con los estilos. Usá los colores de `tokens.css`
    (`var(--color-primario)`, etc.) para que combine.
 3. **En `index.html`** agregá la línea del estilo junto a las otras
-   (`<link rel="stylesheet" href="css/bloques/promos.css">`) y la del script en la lista de
-   bloques (`<script defer src="js/bloques/promos.js"></script>`), antes de `main.js`.
-4. **En `data/sitio.js`** sumá `'promos'` a la lista `bloques`, en el lugar donde querés que aparezca.
+   (`<link rel="stylesheet" href="css/bloques/novedades.css">`) y la del script en la lista de
+   bloques (`<script defer src="js/bloques/novedades.js"></script>`), antes de `main.js`.
+4. **En `data/sitio.js`** sumá `'novedades'` a la lista `bloques`, en el lugar donde querés que aparezca.
+
+Si el bloque no tiene nada para mostrar (por ejemplo, no hay datos cargados), `montar` puede devolver `false`:
+la sección y su lugar en el menú se omiten sin errores.
 
 Reglas para que siga siendo seguro:
 - Crear el HTML con `h('etiqueta', { texto: '...' })`. **No usar `innerHTML`**: la política de
@@ -165,10 +192,14 @@ puede sumar como bloque nuevo sin rehacer el resto.
 - **Sin servicios externos:** tipografías incluidas en `fonts/`, nada de Google Fonts ni
   librerías de terceros (menos riesgo y más privacidad).
 
+- **Siempre al día:** la página, los scripts, los estilos y los datos le piden al navegador que revise en cada
+  visita si hubo cambios (`.htaccess` y `_headers`). Así, después de actualizar la web, nadie ve archivos viejos
+  mezclados con nuevos. Las fuentes sí se guardan un año (no cambian).
+
 Cosas que hay que hacer al publicar:
 1. Activar el certificado HTTPS (candadito) en el hosting y luego descomentar la redirección a
    HTTPS en `.htaccess` (si usan Apache).
-2. No subir `README.md` si no quieren que se vea (el `.htaccess` ya lo bloquea en Apache).
+2. No subir `README.md`, `CLAUDE.md` ni `servidor-dev.py` si no quieren que se vean (el `.htaccess` ya los bloquea en Apache).
 3. Si algún día agregan Google Analytics, un mapa embebido u otro servicio externo, hay que
    permitirlo a propósito en la política de contenido (`index.html`, `.htaccess` y `_headers`).
    Si se agrega sin eso, el navegador lo bloquea (no es un error del sitio).
@@ -180,6 +211,7 @@ Cosas que hay que hacer al publicar:
 - [ ] `data/sitio.js`: nombre, WhatsApp real, logo, foto de portada, redes
 - [ ] `data/sucursales.js`: direcciones, teléfonos, WhatsApp y horarios reales de las 3 sucursales
 - [ ] `data/productos.js`: productos y precios reales; marcar 4 como `destacado: true`
+- [ ] `data/promos.js`: revisar una por una los precios y el contenido de las promos; poner `hasta` en las que tengan vencimiento
 - [ ] `data/mayoristas.js`: decidir con Matías si los precios son públicos o reservados (sección 5)
 - [ ] `datosDeEjemplo: false`
 - [ ] `index.html`: revisar `<title>` y descripción (es lo que se ve en Google y al compartir el link)

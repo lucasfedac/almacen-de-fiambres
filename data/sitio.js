@@ -66,10 +66,7 @@ Fiambreria.datos.sitio = {
   promos: {
     menu: 'Promos',
     titulo: 'Promos',
-    bajada: 'Combos armados para que lleves más por menos. Elegí la tuya y pedila por WhatsApp.',
-    boton: 'Pedir por WhatsApp',
-    // Mensaje que se arma al tocar el botón. {promo} y {precio} se completan solos.
-    mensaje: 'Hola! Quiero pedir la {promo} ({precio}).',
+    bajada: 'Combos armados para que lleves más por menos. Sumá las que quieras a tu pedido, junto con otros productos, y enviá todo por WhatsApp.',
     // Cuántas promos se ven al principio; el resto aparece con el botón "Ver más". 0 = mostrar todas.
     visiblesAlInicio: 6,
     botonVerMas: 'Ver más promos'

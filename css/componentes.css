@@ -347,6 +347,20 @@
   gap: 0.55rem;
 }
 
+/* Título de cada grupo del ticket (por peso / promos) cuando el pedido tiene los dos */
+.ticket__subtitulo {
+  margin-top: 0.4rem;
+  margin-bottom: 0.6rem;
+  color: var(--color-tinta-suave);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.ticket__lista + .ticket__subtitulo {
+  margin-top: 1.1rem;
+}
+
 .ticket__fila,
 .ticket__total {
   display: flex;

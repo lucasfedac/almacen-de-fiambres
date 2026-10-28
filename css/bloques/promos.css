@@ -102,7 +102,11 @@
   font-weight: 700;
 }
 
-.promo .boton {
+.promo--en-pedido {
+  border-color: var(--color-primario-claro);
+}
+
+.promo__control {
   margin-top: var(--e-2);
 }
 

@@ -211,6 +211,18 @@
     }));
   }
 
+  /* ---------- Vigencia de promos ---------- */
+
+  // Fecha de hoy en Argentina, como "AAAA-MM-DD" (para comparar con "hasta")
+  function hoyEnArgentina() {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: ZONA }).format(new Date());
+  }
+
+  // Una promo vale hasta el final del día "hasta"; sin fecha, siempre vale
+  function promoVigente(promo) {
+    return !!promo && (!promo.hasta || promo.hasta >= hoyEnArgentina());
+  }
+
   /* ---------- Aviso para lectores de pantalla ---------- */
 
   let regionAviso = null;
@@ -241,6 +253,6 @@
   Object.assign(F.util, {
     esUrlSegura, h, vaciar, formatoPesos, formatoGramos, formatoFecha, normalizar, limpiarTexto, debounce,
     numeroWhatsAppValido, linkWhatsApp, whatsappDeSucursal, linkMapa,
-    estadoHorario, etiquetaDias, resumenHorarios, avisar, guardarLocal, leerLocal
+    estadoHorario, etiquetaDias, resumenHorarios, promoVigente, avisar, guardarLocal, leerLocal
   });
 })();
