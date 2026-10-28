@@ -10,7 +10,7 @@
 
   F.bloques.mayoristas = {
     id: 'proveedores',
-    menu: 'Proveedores',
+    menu: 'Lista mayorista',
     montar(seccion) {
       const t = F.datos.sitio.mayoristas;
       const datos = F.datos.mayoristas;
@@ -28,7 +28,7 @@
         return h('div', { class: 'precios' },
           h('table', { class: 'tabla' },
             h('caption', { class: 'tabla__titulo' },
-              'Lista de precios para proveedores',
+              'Lista mayorista',
               fecha ? h('span', { class: 'tabla__fecha', texto: 'Actualizada el ' + fecha }) : null
             ),
             h('thead', null, h('tr', null,

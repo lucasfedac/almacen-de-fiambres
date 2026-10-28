@@ -38,7 +38,7 @@ Fiambreria.datos.sitio = {
   // ---------- Textos de cada sección ----------
 
   hero: {
-    titulo: 'Fiambres y quesos, por la cantidad que necesites.',
+    titulo: 'Fiambres y quesos seleccionados, la mejor calidad a tu mesa.',
     bajada: 'Elegí tus productos, armá el pedido y mandalo por WhatsApp a la sucursal que te quede más cerca.',
     // Foto principal (ej: 'img/hero.jpg'). Vacío = se muestra un diseño de baldosas.
     imagen: 'img/hero.jpg',
@@ -51,7 +51,7 @@ Fiambreria.datos.sitio = {
     puntos: [
       { titulo: 'Desde 50 g', texto: 'Pedís la cantidad justa, ni más ni menos.' },
       { titulo: 'Retiro en sucursal', texto: 'Te confirmamos por WhatsApp cuando está listo.' },
-      { titulo: 'Venta mayorista', texto: 'Lista de precios para comercios y proveedores.' }
+      { titulo: 'Venta mayorista', texto: 'Lista mayorista para comercios y revendedores.' }
     ]
   },
 
@@ -73,8 +73,8 @@ Fiambreria.datos.sitio = {
   },
 
   mayoristas: {
-    menu: 'Proveedores',
-    titulo: 'Clientes proveedores',
+    menu: 'Lista mayorista',
+    titulo: 'Lista mayorista',
     bajada: 'Precios especiales para comercios, restaurantes y revendedores.',
     // Beneficios (3 o 4 líneas cortas)
     beneficios: [
@@ -83,9 +83,9 @@ Fiambreria.datos.sitio = {
       'Atención directa para coordinar entregas y retiros.'
     ],
     botonLista: 'Pedir la lista completa',
-    mensajeLista: 'Hola! Soy un comercio y quiero recibir la lista de precios para proveedores.',
-    botonAlta: 'Quiero ser cliente proveedor',
-    mensajeAlta: 'Hola! Quiero ser cliente proveedor. ¿Qué datos necesitan para darme de alta?'
+    mensajeLista: 'Hola! Soy un comercio y quiero recibir la lista mayorista.',
+    botonAlta: 'Quiero ser cliente mayorista',
+    mensajeAlta: 'Hola! Quiero ser cliente mayorista. ¿Qué datos necesitan para darme de alta?'
   },
 
   sucursales: {
