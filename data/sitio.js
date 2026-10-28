@@ -67,9 +67,9 @@ Fiambreria.datos.sitio = {
     menu: 'Promos',
     titulo: 'Promos',
     bajada: 'Combos armados para que lleves más por menos. Sumá las que quieras a tu pedido, junto con otros productos, y enviá todo por WhatsApp.',
-    // Cuántas promos se ven al principio; el resto aparece con el botón "Ver más". 0 = mostrar todas.
-    visiblesAlInicio: 0,
-    botonVerMas: 'Ver más promos'
+    // Cuántas promos se ven al principio; el resto aparece con el botón "Mostrar más promos". 0 = mostrar todas.
+    visiblesAlInicio: 6,
+    botonVerMas: 'Mostrar más promos'
   },
 
   mayoristas: {

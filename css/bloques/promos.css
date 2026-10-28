@@ -115,3 +115,10 @@
   justify-content: center;
   margin-top: var(--e-6);
 }
+
+/* botón chico: no tiene que competir con las tarjetas */
+.promos__mas {
+  min-height: 0;
+  padding: var(--e-2) var(--e-4);
+  font-size: var(--t-sm);
+}
