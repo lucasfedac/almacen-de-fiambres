@@ -33,7 +33,7 @@ Fiambreria.datos.sitio = {
 
   // Secciones que se muestran, en este orden.
   // Para ocultar una, borrá su línea. Para sumar una nueva, mirá el README.
-  bloques: ['hero', 'productos', 'mayoristas', 'sucursales'],
+  bloques: ['hero', 'productos', 'promos', 'mayoristas', 'sucursales'],
 
   // ---------- Textos de cada sección ----------
 
@@ -61,6 +61,18 @@ Fiambreria.datos.sitio = {
     bajada: 'Elegí la cantidad de cada producto y armá tu pedido. Se pesa al cortar, así que el total final puede variar un poco.',
     buscador: 'Buscar producto',
     nota: 'Precios por la porción indicada (cada 50 g o cada 100 g). El importe final se confirma al pesar.'
+  },
+
+  promos: {
+    menu: 'Promos',
+    titulo: 'Promos',
+    bajada: 'Combos armados para que lleves más por menos. Elegí la tuya y pedila por WhatsApp.',
+    boton: 'Pedir por WhatsApp',
+    // Mensaje que se arma al tocar el botón. {promo} y {precio} se completan solos.
+    mensaje: 'Hola! Quiero pedir la {promo} ({precio}).',
+    // Cuántas promos se ven al principio; el resto aparece con el botón "Ver más". 0 = mostrar todas.
+    visiblesAlInicio: 6,
+    botonVerMas: 'Ver más promos'
   },
 
   mayoristas: {

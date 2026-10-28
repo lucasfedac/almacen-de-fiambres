@@ -1,0 +1,113 @@
+/* BLOQUE: PROMOS */
+
+.bloque--promos {
+  background: var(--color-papel);
+}
+
+.promos__cabecera {
+  display: grid;
+  gap: var(--e-3);
+  max-width: 40rem;
+}
+
+.promos__bajada {
+  color: var(--color-tinta-suave);
+  font-size: var(--t-lg);
+  line-height: 1.5;
+}
+
+.promos__rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--e-5);
+  margin-top: var(--e-6);
+}
+
+.promo {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-medio);
+  background: var(--color-blanco);
+}
+
+.promo--destacada {
+  border-color: var(--color-queso);
+}
+
+/* contain: la gráfica de alguna promo no es cuadrada y no se tiene que cortar */
+.promo__foto {
+  display: block;
+  width: 100%;
+  height: auto; /* pisa el atributo height de la etiqueta; la proporción la da aspect-ratio */
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: var(--color-fondo-profundo);
+}
+
+.promo__cuerpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--e-2);
+  padding: var(--e-4) var(--e-5) var(--e-5);
+}
+
+.promo__etiqueta {
+  padding: 0.15rem 0.7rem;
+  border-radius: var(--radio-pildora);
+  background: var(--color-queso);
+  color: var(--color-fondo-profundo);
+  font-size: var(--t-xs);
+  font-weight: 800;
+}
+
+.promo__titulo {
+  font-size: var(--t-xl);
+}
+
+.promo__desc {
+  color: var(--color-tinta-suave);
+  font-size: var(--t-sm);
+  line-height: 1.45;
+}
+
+.promo__precio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: var(--e-2);
+}
+
+.promo__importe {
+  color: var(--color-primario);
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-xl);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.promo__unidad {
+  color: var(--color-tinta-suave);
+  font-size: var(--t-sm);
+}
+
+.promo__vigencia {
+  color: var(--color-queso);
+  font-size: var(--t-xs);
+  font-weight: 700;
+}
+
+.promo .boton {
+  margin-top: var(--e-2);
+}
+
+.promos__pie {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--e-6);
+}

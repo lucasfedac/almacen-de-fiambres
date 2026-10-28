@@ -54,7 +54,8 @@
 }
 
 .boton--contorno-claro:hover {
-  background: var(--color-texto-claro);`r`n  color: var(--color-fondo-profundo);
+  background: var(--color-texto-claro);
+  color: var(--color-fondo-profundo);
 }
 
 .boton--queso {

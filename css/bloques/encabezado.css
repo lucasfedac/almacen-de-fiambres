@@ -104,7 +104,8 @@
 }
 
 .boton-pedido__cuenta--vacia {
-  background: rgb(0 0 0 / 0.12);`r`n  color: var(--color-blanco);
+  background: rgb(0 0 0 / 0.12);
+  color: var(--color-blanco);
 }
 
 .boton-pedido__monto {

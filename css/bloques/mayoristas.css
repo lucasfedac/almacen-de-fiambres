@@ -1,7 +1,8 @@
 /* BLOQUE: CLIENTES PROVEEDORES (mayoristas) */
 
 .bloque--mayoristas {
-  background: var(--color-panel);`r`n  color: var(--color-texto-claro);
+  background: var(--color-panel);
+  color: var(--color-texto-claro);
 }
 
 .bloque--mayoristas h2 {

@@ -27,6 +27,17 @@
       if (!Number.isFinite(p.precio) || p.precio <= 0) avisos.push(donde + '"precio" tiene que ser un número mayor a 0.');
     }
 
+    const idsPromos = new Set();
+    for (const p of F.datos.promos.items) {
+      const donde = 'data/promos.js, promo "' + (p.id || p.titulo) + '": ';
+      if (!p.id) avisos.push('data/promos.js: hay una promo sin "id" (' + p.titulo + ').');
+      if (idsPromos.has(p.id)) avisos.push(donde + 'el "id" está repetido.');
+      idsPromos.add(p.id);
+      if (!Number.isFinite(p.precio) || p.precio <= 0) avisos.push(donde + '"precio" tiene que ser un número mayor a 0.');
+      if (!['combo', 'kilo', '100g'].includes(p.unidad)) avisos.push(donde + '"unidad" tiene que ser \'combo\', \'kilo\' o \'100g\'.');
+      if (p.hasta && !/^\d{4}-\d{2}-\d{2}$/.test(p.hasta)) avisos.push(donde + '"hasta" tiene que tener el formato AAAA-MM-DD (ej: 2026-11-30).');
+    }
+
     const idsSucursales = new Set();
     for (const s of sucursales) {
       if (idsSucursales.has(s.id)) avisos.push('data/sucursales.js: el id "' + s.id + '" está repetido.');
@@ -80,8 +91,8 @@
 
   function montar(nombre, contenedor, ctx) {
     try {
-      F.bloques[nombre].montar(contenedor, ctx);
-      return true;
+      // un bloque puede devolver false para indicar que no tiene nada que mostrar (ej: promos vencidas)
+      return F.bloques[nombre].montar(contenedor, ctx) !== false;
     } catch (error) {
       console.error('[Sitio] El bloque "' + nombre + '" falló y se omitió:', error);
       return false;
