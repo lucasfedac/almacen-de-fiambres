@@ -65,7 +65,7 @@
         const control = agotado ? null : crearControl(p);
         const li = h('li', { class: 'producto' + (p.imagen ? ' producto--foto' : '') + (agotado ? ' producto--agotado' : '') },
           p.imagen ? h('img', {
-            class: 'producto__foto', src: p.imagen, alt: '', width: 72, height: 72, loading: 'lazy',
+            class: 'producto__foto', src: p.imagen, alt: '', width: 108, height: 144, loading: 'lazy',
             onerror() { this.remove(); li.classList.remove('producto--foto'); }
           }) : null,
           h('div', { class: 'producto__info' },

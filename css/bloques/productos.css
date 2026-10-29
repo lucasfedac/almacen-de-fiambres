@@ -95,7 +95,7 @@
 }
 
 .producto--foto {
-  grid-template-columns: 72px minmax(0, 1fr) auto;
+  grid-template-columns: 108px minmax(0, 1fr) auto;
 }
 
 .producto--en-pedido {
@@ -108,8 +108,8 @@
 }
 
 .producto__foto {
-  width: 72px;
-  height: 72px;
+  width: 108px;
+  height: 144px;
   object-fit: cover;
   border-radius: var(--radio-medio);
 }
