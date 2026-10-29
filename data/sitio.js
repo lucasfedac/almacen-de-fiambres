@@ -18,7 +18,7 @@ Fiambreria.datos.sitio = {
   // Logo: poné el archivo en la carpeta /img y escribí acá su ruta (ej: 'img/logo.png').
   // Si lo dejás vacío, se muestra el nombre en texto.
   logo: 'img/logo.png',
-  logoAlto: 48, // alto en píxeles del logo en el encabezado
+  logoAlto: 56, // alto en píxeles del logo en el encabezado
 
   // WhatsApp general, con código de país y sin +, espacios ni guiones.
   // Argentina celular: 54 9 + código de área + número  →  5491123456789
@@ -40,8 +40,8 @@ Fiambreria.datos.sitio = {
   hero: {
     titulo: 'Fiambres y quesos seleccionados, la mejor calidad a tu mesa.',
     bajada: 'Elegí tus productos, armá el pedido y mandalo por WhatsApp a la sucursal que te quede más cerca.',
-    // Foto principal (ej: 'img/hero.jpg'). Vacío = se muestra un diseño de baldosas.
-    imagen: 'img/hero.jpg',
+    // Foto principal (ej: 'img/hero.png'). Vacío = se muestra un diseño de baldosas.
+    imagen: 'img/hero.png',
     imagenAlt: 'Logo de Almacén de Fiambres',
     botonPrincipal: { texto: 'Armar mi pedido', destino: '#promos' },
     botonSecundario: { texto: 'Ver sucursales', destino: '#sucursales' },
@@ -60,6 +60,9 @@ Fiambreria.datos.sitio = {
     titulo: 'Productos',
     bajada: 'Elegí la cantidad de cada producto y armá tu pedido. Se pesa al cortar, así que el total final puede variar un poco.',
     buscador: 'Buscar producto',
+    // Cuántos productos se ven al principio (sin filtros); el resto aparece con el botón "Ver más productos". 0 = mostrar todos.
+    visiblesAlInicio: 6,
+    botonVerMas: 'Ver más productos',
     nota: 'Precios por la porción indicada (cada 50 g o cada 100 g). El importe final se confirma al pesar.'
   },
 

@@ -52,7 +52,8 @@
       const textos = F.datos.sitio.productos;
       const categorias = F.datos.productos.categorias;
       const items = F.datos.productos.items;
-      const estado = { categoria: 'todas', busqueda: '' };
+      const estado = { categoria: 'todas', busqueda: '', expandidos: new Set() };
+      const visibles = textos.visiblesAlInicio > 0 ? textos.visiblesAlInicio : Infinity;
       let controles = new Map();
       let primeraVez = true;
 
@@ -112,16 +113,32 @@
         const sueltos = items.filter((p) => !idsConocidos.has(p.categoria) && coincide(p));
         if (sueltos.length && estado.categoria === 'todas') grupos.push({ id: 'otros', nombre: 'Otros', productos: sueltos });
 
+        // El límite de "visibles al inicio" corre por categoría y solo sin filtros; con categoría o búsqueda se ve todo lo que coincide
+        const limitar = estado.categoria === 'todas' && !normalizar(estado.busqueda);
         let total = 0;
         for (const g of grupos) {
           if (!g.productos.length) continue;
           total += g.productos.length;
-          lista.append(
-            h('div', { class: 'grupo' },
-              h('h3', { class: 'grupo__titulo', texto: g.nombre }),
-              h('ul', { class: 'grupo__lista' }, g.productos.map(fila))
-            )
+          const filas = g.productos.map(fila);
+          const ocultas = limitar && !estado.expandidos.has(g.id) ? filas.slice(visibles) : [];
+          ocultas.forEach((li) => { li.hidden = true; });
+          const bloque = h('div', { class: 'grupo' },
+            h('h3', { class: 'grupo__titulo', texto: g.nombre }),
+            h('ul', { class: 'grupo__lista' }, filas)
           );
+          if (ocultas.length) {
+            const boton = h('button', {
+              type: 'button', class: 'boton boton--contorno productos__mas',
+              onclick() {
+                estado.expandidos.add(g.id);
+                ocultas.forEach((li) => { li.hidden = false; });
+                boton.parentElement.remove();
+                avisar('Se muestran los ' + g.productos.length + ' productos de ' + g.nombre + '.');
+              }
+            }, (textos.botonVerMas || 'Ver más productos') + ' (' + ocultas.length + ')');
+            bloque.append(h('div', { class: 'productos__pie' }, boton));
+          }
+          lista.append(bloque);
         }
         if (!total) lista.append(vacio());
         controles.forEach((c) => c.actualizar());
