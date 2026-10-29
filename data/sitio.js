@@ -40,13 +40,10 @@ Fiambreria.datos.sitio = {
   hero: {
     titulo: 'Fiambres y quesos seleccionados, la mejor calidad a tu mesa.',
     bajada: 'Elegí tus productos, armá el pedido y mandalo por WhatsApp a la sucursal que te quede más cerca.',
-    // Foto principal (ej: 'img/hero.png'). Vacío = se muestra un diseño de baldosas.
-    imagen: 'img/hero.png',
-    imagenAlt: 'Logo de Almacén de Fiambres',
+    // Foto de fondo del banner (se mueve con el scroll). Vacío = fondo oscuro liso.
+    imagen: 'img/banner.webp',
     botonPrincipal: { texto: 'Armar mi pedido', destino: '#promos' },
     botonSecundario: { texto: 'Ver sucursales', destino: '#sucursales' },
-    // Cuántos productos "destacados" se muestran en el papelito del hero (los marcás en productos.js)
-    cantidadDestacados: 4,
     // Tres frases cortas debajo de los botones
     puntos: [
       { titulo: 'Desde 50 g', texto: 'Pedís la cantidad justa, ni más ni menos.' },
