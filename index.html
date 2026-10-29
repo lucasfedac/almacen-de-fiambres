@@ -10,7 +10,7 @@
     Por eso no hay <script> ni style="" escritos dentro del HTML.
     (El hosting también aplica la misma política por cabeceras: ver _headers y .htaccess)
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://www.google.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <!-- Título y descripción: se ven en Google y al compartir el link por WhatsApp.
@@ -45,6 +45,7 @@
   <link rel="stylesheet" href="css/bloques/promos.css">
   <link rel="stylesheet" href="css/bloques/mayoristas.css">
   <link rel="stylesheet" href="css/bloques/sucursales.css">
+  <link rel="stylesheet" href="css/bloques/ubicacion.css">
   <link rel="stylesheet" href="css/bloques/pie.css">
   <link rel="stylesheet" href="css/bloques/boton-whatsapp.css">
   <!-- Para sumar un bloque nuevo: agregar acá su CSS (ver README) -->
@@ -69,6 +70,7 @@
   <script defer src="js/bloques/promos.js"></script>
   <script defer src="js/bloques/mayoristas.js"></script>
   <script defer src="js/bloques/sucursales.js"></script>
+  <script defer src="js/bloques/ubicacion.js"></script>
   <script defer src="js/bloques/pie.js"></script>
   <script defer src="js/bloques/boton-whatsapp.js"></script>
   <!-- Para sumar un bloque nuevo: agregar acá su JS (ver README) -->

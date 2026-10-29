@@ -33,7 +33,7 @@ Fiambreria.datos.sitio = {
 
   // Secciones que se muestran, en este orden.
   // Para ocultar una, borrá su línea. Para sumar una nueva, mirá el README.
-  bloques: ['hero', 'promos', 'productos', 'mayoristas', 'sucursales'],
+  bloques: ['hero', 'promos', 'productos', 'mayoristas', 'sucursales', 'ubicacion'],
 
   // ---------- Textos de cada sección ----------
 
@@ -92,6 +92,13 @@ Fiambreria.datos.sitio = {
     menu: 'Sucursales',
     titulo: 'Sucursales',
     bajada: 'Pasá por la que te quede más cerca o escribinos por WhatsApp.'
+  },
+
+  ubicacion: {
+    menu: 'Cómo llegar',
+    titulo: 'Dónde estamos',
+    bajada: 'Mirá en el mapa dónde queda cada sucursal. Tocá el mapa para moverte por la zona.'
+    // Los mapas de cada sucursal se cargan en data/sucursales.js (campo mapaEmbed)
   },
 
   pie: {

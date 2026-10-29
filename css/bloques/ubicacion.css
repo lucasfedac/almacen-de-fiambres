@@ -1,0 +1,56 @@
+/* BLOQUE: UBICACIÓN */
+
+.bloque--ubicacion {
+  background: var(--color-blanco);
+}
+
+.ubicacion__cabecera {
+  display: grid;
+  gap: var(--e-3);
+  max-width: 40rem;
+}
+
+.ubicacion__bajada {
+  color: var(--color-tinta-suave);
+  font-size: var(--t-lg);
+  line-height: 1.5;
+}
+
+.ubicacion__rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--e-5);
+  margin-top: var(--e-6);
+}
+
+.ubicacion__ficha {
+  display: grid;
+  align-content: start;
+  gap: var(--e-3);
+}
+
+.ubicacion__nombre {
+  font-size: var(--t-xl);
+}
+
+.ubicacion__direccion {
+  color: var(--color-tinta-suave);
+}
+
+.ubicacion__mapa {
+  border: 1px solid var(--color-linea);
+  border-radius: var(--radio-medio);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.ubicacion__mapa iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.ubicacion__enlace {
+  justify-self: start;
+}
